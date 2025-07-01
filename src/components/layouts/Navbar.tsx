@@ -3,8 +3,7 @@ import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const user = useSelector((state) => state.user)
-  console.log(user)
+  const user = useSelector((store) => store?.user)
   return (
    <div className="navbar bg-neutral shadow-sm">
   <div className="navbar-start">
@@ -49,7 +48,7 @@ const Navbar = () => {
  <Link to="/profile">
 
 
-   <img src="" alt="" className="h-10 w-10 rounded-full hover:cursor-pointer" />
+   <img src={user?.profilePic} alt="" className="h-10 w-10 rounded-full hover:cursor-pointer" />
  </Link>
     ) :(
       <Link to="/profile">

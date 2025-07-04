@@ -5,6 +5,9 @@ import AppLayout from "./components/layouts/AppLayout"
 import Profile from "./components/Profile"
 import Feed from "./components/Feed"
 import Alert from "./components/common/Alert"
+import ProfilePage from "./Pages/authentication/ProfilePage"
+import Connections from "./components/Connections"
+import Requests from "./components/Requests"
 
 function App() {
 
@@ -17,8 +20,9 @@ function App() {
       <Route path="/register" element={<RegisterPage/>}/>
       <Route path="/" element={<AppLayout/>}>
             <Route index path="/" element={<Feed />}/>
-      <Route path="/profile" element={<Profile />}/>
-
+      <Route path="/profile" element={<ProfilePage />}/>
+      <Route path="/connections" element={<Connections />}/>
+      <Route path="/requests" element={<Requests />}/>
       </Route>
 
   </Routes>

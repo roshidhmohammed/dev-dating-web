@@ -10,7 +10,7 @@ import { axiosInstance } from "../utils/apis/axiosInstance";
 // React Icons
 import { FaLock } from "react-icons/fa";
 import { FaUnlock } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {useDispatch} from "react-redux"
 
 // React sonner for alert
@@ -44,6 +44,14 @@ const Login = () => {
         toast.error(error.response.data);
       });
   };
+
+  // useEffect(()=>{
+  //   return ()=>{
+  //   setTimeout(()=>{
+  //       toast.dismiss()
+  //   }, 1000)
+  //   }
+  // })
 
   return (
     <div className=" flex  justify-center flex-col items-center h-screen">

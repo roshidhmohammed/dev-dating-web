@@ -2,14 +2,13 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Outlet, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../utils/apis/axiosInstance";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/slices/userSlice";
 import { useEffect } from "react";
 
 const AppLayout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const userData = useSelector((store) => store.user);
 
   const fetchUser = async () => {
     await axiosInstance
@@ -20,7 +19,7 @@ const AppLayout = () => {
       .catch((error) => {
         if (error.status === 401) {
           dispatch(addUser(null));
-          navigate("/login");
+          navigate("/auth/login");
         }
       });
   };
@@ -29,7 +28,7 @@ const AppLayout = () => {
     fetchUser();
   });
   return (
-    <div>
+    <div className="  flex justify-between items-center  flex-col min-h-screen">
       <Navbar />
       <Outlet />
       <Footer />

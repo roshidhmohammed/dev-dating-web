@@ -1,7 +1,7 @@
 import MetaPageData from "../../components/common/MetaPageData";
-import Login from "../../components/Login";
+import Authentication from "../../components/Authentication";
 
-const LoginPage = () => {
+const AuthenticationPage = () => {
   return (
     <div>
       <MetaPageData
@@ -11,9 +11,9 @@ const LoginPage = () => {
           "dating app, find love, meet singles, online dating, chat, relationships"
         }
       />
-      <Login/>
+      <Authentication />
     </div>
   );
 };
 
-export default LoginPage;
+export default AuthenticationPage;

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequests, removeRequests } from "../utils/slices/requestsSlice";
 import { axiosInstance } from "../utils/apis/axiosInstance";
-import axios from "axios";
 import { toast } from "sonner";
 
 const Requests = () => {
@@ -25,20 +24,29 @@ const Requests = () => {
     fetchRequests();
   }, []);
 
-  const reviewRequest =async(status, requestId)=>{
-    await axiosInstance.post(`request/review/${status}/${requestId}`, {}, {withCredentials:true})
-    .then((res)=>{
-        toast.success(res.data.message)
-        fetchRequests()
-    })
-    .catch((error)=>{
-        toast.error(error.response.data)
-        
-    })
-  }
+  const reviewRequest = async (status: string, requestId: string) => {
+    await axiosInstance
+      .post(
+        `request/review/${status}/${requestId}`,
+        {},
+        { withCredentials: true }
+      )
+      .then((res) => {
+        toast.success(res.data.message);
+        fetchRequests();
+      })
+      .catch((error) => {
+        toast.error(error.response.data);
+      });
+  };
 
   if (!requests) return;
-  if(requests?.length ===0 ) return <h1 className=" font-bold text-center text-white pt-40">No requests found</h1>
+  if (requests?.length === 0)
+    return (
+      <h1 className=" font-bold text-center text-white pt-40">
+        No requests found
+      </h1>
+    );
 
   return (
     <div className="mt-20">
@@ -67,8 +75,18 @@ const Requests = () => {
                   </div>
                 </div>
                 <div className="absolute right-3 flex gap-3">
-                   <button className="btn btn-primary" onClick={()=> reviewRequest("accepted", request?._id)}>Accept</button>
-       <button className="btn btn-secondary" onClick={()=> reviewRequest("rejected", request?._id)}>Reject</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => reviewRequest("accepted", request?._id)}
+                  >
+                    Accept
+                  </button>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => reviewRequest("rejected", request?._id)}
+                  >
+                    Reject
+                  </button>
                 </div>
               </div>
             </div>

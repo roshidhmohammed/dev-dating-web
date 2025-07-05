@@ -7,20 +7,21 @@ import { toast } from "sonner";
 
 const Navbar = () => {
   const user = useSelector((store) => store?.user);
-  const dispatch = useDispatch()
-  const navigate= useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleLogout = async() =>{
-    await axiosInstance.post("logout", {}, {withCredentials:true})
-    .then((res)=>{
-      dispatch(removeUser())
-      toast.success(res.data)
-      navigate("/login")
-    })
-    .catch((error)=>{
-      toast.error(error.response.data)
-    })
-  }
+  const handleLogout = async () => {
+    await axiosInstance
+      .post("logout", {}, { withCredentials: true })
+      .then((res) => {
+        dispatch(removeUser());
+        toast.success(res.data);
+        navigate("/auth/login");
+      })
+      .catch((error) => {
+        toast.error(error.response.data);
+      });
+  };
   return (
     <div className="navbar bg-neutral shadow-sm fixed top-0 z-50">
       <div className="navbar-start">
@@ -65,7 +66,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Dev Dating</a>
+        <Link to="/" className="btn btn-ghost text-xl">
+          Dev Dating
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -129,7 +132,6 @@ const Navbar = () => {
           >
             <li>
               <Link to="/profile" className="justify-between flex">
-              
                 Profile
                 <span className="badge">New</span>
               </Link>
@@ -137,10 +139,10 @@ const Navbar = () => {
             <li>
               <Link to="/connections">Connections</Link>
             </li>
-             <li>
+            <li>
               <Link to="/requests">Requests</Link>
             </li>
-            <li onClick={()=> handleLogout()}>
+            <li onClick={() => handleLogout()}>
               <a>Logout</a>
             </li>
           </ul>

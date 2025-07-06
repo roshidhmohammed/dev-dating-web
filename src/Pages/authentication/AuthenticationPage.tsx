@@ -9,6 +9,8 @@ const AuthenticationPage = () => {
         description="This is developer dating platform"
         keywords=
           "dating app, find love, meet singles, online dating, chat, relationships"
+          image=""
+          url=""
         
       />
       <Authentication />

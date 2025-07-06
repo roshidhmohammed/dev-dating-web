@@ -5,7 +5,7 @@ import connectionReducer from "./slices/connectionsSlice"
 import requestReducer from "./slices/requestsSlice"
 
 
-const appStore = configureStore({
+const store = configureStore({
   reducer: {
     user: userReducer,
     feed: feedReducer,
@@ -14,6 +14,6 @@ const appStore = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof appStore.getState>;
+export type RootState = ReturnType<typeof store.getState>;
 
-export default appStore;
+export default store;

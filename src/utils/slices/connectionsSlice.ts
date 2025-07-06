@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { UserData } from "../../types";
+
+const initialState :UserData[] | null = null;;
 
 const connectionsSlice = createSlice({
   name: "connectons",
-  initialState: null,
+  initialState,
   reducers: {
     addConnections: (_state, action) => action.payload,
     removeConnections: () => null,

@@ -10,6 +10,8 @@ const ProfilePage = () => {
         keywords={
           "dating app, find love, meet singles, online dating, chat, relationships"
         }
+        image=""
+          url=""
       />
       <div className=" flex justify-center gap-5   my-40  items-center  md:flex-row flex-col">
         <EditProfile />

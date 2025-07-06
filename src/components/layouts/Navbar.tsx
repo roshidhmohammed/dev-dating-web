@@ -4,9 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../utils/apis/axiosInstance";
 import { removeUser } from "../../utils/slices/userSlice";
 import { toast } from "sonner";
+import type { RootState } from "../../utils/store";
+import type { UserData } from "../../types";
 
 const Navbar = () => {
-  const user = useSelector((store) => store?.user);
+  const user = useSelector((state:RootState):UserData | null => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,6 +24,7 @@ const Navbar = () => {
         toast.error(error.response.data);
       });
   };
+
   return (
     <div className="navbar bg-neutral shadow-sm fixed top-0 z-50">
       <div className="navbar-start">
@@ -115,7 +118,7 @@ const Navbar = () => {
             className="btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              {user?.profilePic ? (
+              {user?.profilePic? (
                 <img
                   src={user?.profilePic}
                   alt=""

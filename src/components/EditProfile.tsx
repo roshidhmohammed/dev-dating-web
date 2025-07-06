@@ -4,27 +4,30 @@ import { RiEditFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import type { RootState } from "../utils/store";
+import type { UserData } from "../types";
+// import  User  from "../types";
 
 const EditProfile = () => {
-  const userData = useSelector((store) => store.user);
+  const user = useSelector((store:RootState):UserData | null => store.user);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<UserData>();
 
   useEffect(() => {
     reset({
-      firstName: userData?.firstName,
-      lastName: userData?.lastName,
-      profiePic: userData?.profilePic,
-      age: userData?.age,
-      gender: userData?.gender,
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      profilePic: user?.profilePic,
+      age: user?.age,
+      gender: user?.gender,
     });
-  }, [userData]);
+  }, [user]);
 
-  const saveProfile = async (data) => {
+  const saveProfile = async (data:UserData) => {
     console.log(data);
     await axiosInstance
       .patch(
@@ -53,7 +56,7 @@ const EditProfile = () => {
         </div>
         <div className="avatar mt-5 relative">
           <div className="w-full rounded">
-            <img src={userData?.profilePic} />
+            <img src={user?.profilePic} />
           </div>
           <div className=" absolute bottom-1 z-50 right-1 bg-white p-2 rounded-md hover:bg-gray-200 hover:cursor-pointer">
             <RiEditFill className=" text-2xl  text-black  " />
@@ -127,8 +130,8 @@ const EditProfile = () => {
               defaultValue="Color scheme"
               className="select select-accent mt-2 select-lg"
             >
-              <option>{userData?.gender}</option>
-              {userData?.gender === "male" ? (
+              <option>{user?.gender}</option>
+              {user?.gender === "male" ? (
                 <option value={"female"}>Female</option>
               ) : (
                 <option value={"male"}>male</option>

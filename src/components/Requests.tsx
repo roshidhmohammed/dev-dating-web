@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addRequests, removeRequests } from "../utils/slices/requestsSlice";
 import { axiosInstance } from "../utils/apis/axiosInstance";
 import { toast } from "sonner";
+import type { RootState } from "../utils/store";
+import type { RequestsType } from "../types";
 
 const Requests = () => {
   const dispatch = useDispatch();
-  const requests = useSelector((store) => store.requests);
+  const requests = useSelector((store:RootState):RequestsType[] |null => store.requests);
+  console.log(requests)
 
   const fetchRequests = async () => {
     await axiosInstance

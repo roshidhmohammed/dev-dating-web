@@ -1,4 +1,7 @@
 import { Helmet } from "react-helmet";
+import type { metaData } from "../../types";
+
+
 
 const MetaPageData = ({
   title,
@@ -6,7 +9,7 @@ const MetaPageData = ({
   keywords = "",
   image = "",
   url = "http://localhost:5173/",
-}) => {
+}:metaData) => {
   return (
     <Helmet>
       <title>{title}</title>

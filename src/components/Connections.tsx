@@ -6,10 +6,14 @@ import {
   removeConnections,
 } from "../utils/slices/connectionsSlice";
 import { toast } from "sonner"
+import type { RootState } from "../utils/store";
+import type { UserData } from "../types";
 
 const Connections = () => {
   const dispatch = useDispatch();
-  const connections = useSelector((store) => store.connections);
+  const connections = useSelector((store:RootState) :UserData[] | null=> store.connections)
+
+  console.log(connections)
 
   const fetchConnections = async () => {
     await axiosInstance
@@ -35,7 +39,6 @@ const Connections = () => {
         No connections found
       </h1>
     );
-  console.log(connections[0]?.senderId);
   return (
     <div className="mt-20">
       <h1 className=" text-center mb-5 text-2xl font-bold">Connections</h1>

@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
-import type { User } from "../types";
+import type { UserData } from "../types";
 import { axiosInstance } from "../utils/apis/axiosInstance";
 import { removeUserFromFeed } from "../utils/slices/feedSlice";
 import { toast } from "sonner";
 
-const UserCard = ({ user }: User) => {
+const UserCard = ({ user } :{user:UserData} ) => {
   const { _id, firstName, lastName, profilePic, age, gender, about } = user;
   const dispatch = useDispatch();
 

@@ -5,7 +5,7 @@ import {
   addConnections,
   removeConnections,
 } from "../utils/slices/connectionsSlice";
-import { toast } from "sonner";
+import { toast } from "sonner"
 
 const Connections = () => {
   const dispatch = useDispatch();

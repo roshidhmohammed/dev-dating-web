@@ -6,6 +6,7 @@ import ProfilePage from "./Pages/authentication/ProfilePage";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
 import AuthenticationPage from "./Pages/authentication/AuthenticationPage";
+import PremiumAcount from "./components/PremiumAcount";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route index path="/profile" element={<ProfilePage />} />
             <Route path="/connections" element={<Connections />} />
             <Route path="/requests" element={<Requests />} />
+            <Route path="/premium" element={<PremiumAcount />} />
           </Route>
         </Routes>
       </BrowserRouter>

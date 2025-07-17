@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import type { metaData } from "../../types";
+import type { metaData } from "../../types/types";
 
 
 

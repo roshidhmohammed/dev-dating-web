@@ -7,7 +7,7 @@ import {
 } from "../utils/slices/connectionsSlice";
 import { toast } from "sonner"
 import type { RootState } from "../utils/store";
-import type { UserData } from "../types";
+import type { UserData } from "../types/types";
 
 const Connections = () => {
   const dispatch = useDispatch();

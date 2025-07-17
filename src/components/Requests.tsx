@@ -4,7 +4,7 @@ import { addRequests, removeRequests } from "../utils/slices/requestsSlice";
 import { axiosInstance } from "../utils/apis/axiosInstance";
 import { toast } from "sonner";
 import type { RootState } from "../utils/store";
-import type { RequestsType } from "../types";
+import type { RequestsType } from "../types/types";
 
 const Requests = () => {
   const dispatch = useDispatch();

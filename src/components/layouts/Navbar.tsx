@@ -5,7 +5,7 @@ import { axiosInstance } from "../../utils/apis/axiosInstance";
 import { removeUser } from "../../utils/slices/userSlice";
 import { toast } from "sonner";
 import type { RootState } from "../../utils/store";
-import type { UserData } from "../../types";
+import type { UserData } from "../../types/types";
 
 const Navbar = () => {
   const user = useSelector((state:RootState):UserData | null => state.user);

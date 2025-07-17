@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 
 // Typescript
-import type { AuthData } from "../types";
+import type { AuthData } from "../types/types";
 
 // api
 import { axiosInstance } from "../utils/apis/axiosInstance";

@@ -26,7 +26,7 @@ const PremiumAcount = () => {
       .then((res) => {
         console.log(res);
 
-        const { keyId, amount, currency, orderId, notes, receipt, status } =
+        const { keyId, amount, currency, orderId, notes } =
           res.data;
 
         const options = {

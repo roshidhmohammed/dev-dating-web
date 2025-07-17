@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import type { UserData } from "../types";
+import type { UserData } from "../types/types";
 import { axiosInstance } from "../utils/apis/axiosInstance";
 import { removeUserFromFeed } from "../utils/slices/feedSlice";
 import { toast } from "sonner";

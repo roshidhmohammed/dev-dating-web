@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import useFetchFeed from "../hooks/useFetchFeed";
 import UserCard from "./UserCard";
 import type { RootState } from "../utils/store";
-import type { UserData } from "../types";
+import type { UserData } from "../types/types";
 
 const Feed = () => {
   useFetchFeed();

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type {RequestsType} from "../../types"
+import type {RequestsType} from "../../types/types"
 const initialState:RequestsType[] | null =null
 
 const requestSlice = createSlice({

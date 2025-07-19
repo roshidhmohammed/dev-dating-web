@@ -10,6 +10,7 @@ const PremiumAcount = () => {
     await axiosInstance
       .get("/payment/verify", { withCredentials: true })
       .then((res) => {
+        console.log(res)
         if (res.data.user.isPremium) {
           setIsUserPremium(true);
         }

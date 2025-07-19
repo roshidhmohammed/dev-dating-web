@@ -8,10 +8,12 @@ import {
 import { toast } from "sonner"
 import type { RootState } from "../utils/store";
 import type { UserData } from "../types/types";
+import { useNavigate } from "react-router-dom";
 
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((store:RootState) :UserData[] | null=> store.connections)
+  const navigate = useNavigate()
 
   console.log(connections)
 
@@ -42,11 +44,13 @@ const Connections = () => {
   return (
     <div className="mt-20">
       <h1 className=" text-center mb-5 text-2xl font-bold">Connections</h1>
-      <div className=" flex justify-start flex-col items-center gap-5 w-full my-10">
+        <div className=" flex justify-start flex-col items-center gap-5 w-full my-10">
         {connections?.map((connection) => (
+          <div key={connection._id} className=" flex justify-between bg-base-200 p-3 w-full rounded-lg gap-5">
+
           <div
-            key={connection._id}
-            className="bg-base-200 p-3 w-full rounded-lg flex justify-start items-center gap-3"
+            
+            className=" flex justify-start items-center gap-3"
           >
             <img
               src={connection?.profilePic}
@@ -66,9 +70,15 @@ const Connections = () => {
                 <h1>{connection?.about}</h1>
               </div>
             </div>
+            
+          </div>
+            <div className=" flex self-end  my-auto">
+       <button className="btn btn-info" onClick={()=> {navigate(`/chat/${connection._id}`)} }>Send Message</button>
+      </div>
           </div>
         ))}
       </div>
+    
     </div>
   );
 };

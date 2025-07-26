@@ -6,11 +6,11 @@ export type AuthData = {
 };
 
 export interface UserData  {
-  _id: string;
-  firstName: string,
-  lastName: string,
+  _id: string ;
+  firstName?: string | null,
+  lastName?: string | null,
   emailId: string,
-  isSubscribed:boolean,
+  isSubscribed?:boolean,
   about?: string,
   profilePic?: undefined  |  string,
   age?: number,
@@ -19,6 +19,10 @@ export interface UserData  {
   createdAt?:string,
   updatedAt?:string,
 };
+
+export type UserDataState =  {
+  user:UserData
+}
 
 export interface RequestsType {
   createdAt:string,

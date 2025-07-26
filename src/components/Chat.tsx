@@ -4,16 +4,31 @@ import { createSocketConnect } from "../utils/socket";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
 import { axiosInstance } from "../utils/apis/axiosInstance";
+import type { RootState } from "../utils/store";
+import type { Socket } from "socket.io-client";
+import type {  UserDataState } from "../types/types";
+
+interface Message {
+  _id: string;
+  senderId: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    profilePic: string;
+  };
+  text: string;
+  updatedAt: string;
+}
 
 const Chat = () => {
   const { targetUserId } = useParams();
-  const user = useSelector((store) => store?.user);
+  const user = useSelector((store:RootState | UserDataState) => store?.user);
   const userId = user?._id;
-  const [newMessage, setNewMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState<string>("");
+  const [messages, setMessages] = useState<Message[]>([]);
   const navigate = useNavigate();
 
-  const socketRef = useRef(null);
+  const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
     fetchAllMessage();
@@ -32,7 +47,7 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    if (!userId) return;
+    if (!user) return;
 
     const socket = createSocketConnect();
     socketRef.current = socket;

@@ -15,7 +15,6 @@ const Connections = () => {
   const connections = useSelector((store:RootState) :UserData[] | null=> store.connections)
   const navigate = useNavigate()
 
-  console.log(connections)
 
   const fetchConnections = async () => {
     await axiosInstance
